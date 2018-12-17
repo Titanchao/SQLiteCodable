@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         player.id = 24
         player.name = "Kobe"
         player.time = Date()
-        
         Player.insert([player])
         
         
@@ -46,8 +45,5 @@ class Player: SQLiteCodable {
         mapper <<- self.id
         mapper <~~ self.time
     }
-    
-    
-
 }
 
