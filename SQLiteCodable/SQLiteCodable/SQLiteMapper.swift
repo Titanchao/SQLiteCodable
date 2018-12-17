@@ -9,9 +9,9 @@
 import UIKit
 
 public class SQLiteMapper {
-    public var pirmaryKey: Int? = nil
-    public var uniqueKeys: [Int] = []
-    public var ignoreKeys = [Int]()
+    fileprivate var pirmaryKey: Int? = nil
+    fileprivate var uniqueKeys: [Int] = []
+    fileprivate var ignoreKeys = [Int]()
     
     fileprivate func setPrimaryKey<T>(property: inout T) {
         let pointer = withUnsafePointer(to: &property, { return $0 })

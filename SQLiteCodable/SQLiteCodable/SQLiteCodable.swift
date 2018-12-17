@@ -72,7 +72,7 @@ extension SQLiteCodable {
         }
     }
     
-    public static func deleteSQLiteCondition(_ condition: [String: Any]) {
+    static func deleteSQLiteCondition(_ condition: [String: Any]) {
         guard condition.count > 0 else {
             SQLiteLog.error("delete failed: no condition ")
             return
