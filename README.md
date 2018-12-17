@@ -1,22 +1,22 @@
 # SQLiteCodable
 
-#prepare
+```swift
 SQLiteManager.initialize("private")
 SQLiteManager.prepare { () -> [SQLiteCodable.Type] in
-  return [Player.self]
+	return [Player.self]
 }
 
 class Player: SQLiteCodable {
-    var id = 0
-    var name = ""
-    var time = Date()
+	var id = 0
+	var name = ""
+	var time = Date()
     
-    required init() {}
+	required init() {}
     
-    func declareKeys(mapper: SQLiteMapper) {
-        mapper <<- self.id
-        mapper <~~ self.time
-    }
+	func declareKeys(mapper: SQLiteMapper) {
+		mapper <<- self.id
+		mapper <~~ self.time
+	}
 }
 
 let player = Player()
