@@ -9,45 +9,14 @@
 import UIKit
 import GRDB
 
-public protocol SQLiteCodable: SQLiteTransformable {
+public protocol SQLiteCodable: SQLiteConfig, SQLiteTransformable {
     init()
     func declareKeys(mapper: SQLiteMapper)
-    static func isPublicDatabase() -> Bool
-    static func tableName() -> String
-    static func databaseName() -> String
-    static func databasePath() -> String
-    static func databaseVersion() -> String
+    
 }
 
 extension SQLiteCodable {
     func declareKeys(mapper: SQLiteMapper) {}
-
-    public static func isPublicDatabase() -> Bool {
-        return false
-    }
-    
-    public static func tableName() -> String {
-        let tbn = String(describing: type(of: Self.self)).components(separatedBy: ".").first?.lowercased() ?? "\(arc4random())"
-        return tbn + "_" + databaseVersion()
-    }
-    
-    public static func databaseName() -> String {
-        if self.isPublicDatabase() {
-            return SQLiteManager.publicDatabase
-        } else {
-            assert(SQLiteManager.privateDatabase != nil, "private sqlite3 need identifier")
-            return SQLiteManager.privateDatabase!
-        }
-    }
-    
-    public static func databasePath() -> String {
-        return (SQLiteManager.databaseFolder as NSString).appendingPathComponent(self.databaseName())
-    }
-    
-    //don't contain '.'
-    public static func databaseVersion() -> String {
-        return "01"
-    }
 }
 
 extension SQLiteCodable {
