@@ -1,6 +1,7 @@
 # SQLiteCodable
 
 借鉴alibaba/HandyJSON代码
+将model自动存储到数据库
 
 ```swift
 SQLiteManager.initialize("private")
