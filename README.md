@@ -1,5 +1,7 @@
 # SQLiteCodable
 
+借鉴alibaba/HandyJSON代码
+
 ```swift
 SQLiteManager.initialize("private")
 SQLiteManager.prepare { () -> [SQLiteCodable.Type] in
