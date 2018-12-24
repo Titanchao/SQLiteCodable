@@ -236,6 +236,9 @@ fileprivate func assembleComplex(_ dict: [String: Any])  -> [String: Any] {
         for (k,_) in result {
             maxCount = max(maxCount, k.components(separatedBy: kConnector).count)
         }
+        if maxCount == 1 {
+            continue
+        }
         for (k,v) in result {
             let keys = k.components(separatedBy: kConnector)
             if keys.count == maxCount {

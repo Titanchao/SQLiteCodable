@@ -16,7 +16,7 @@ public protocol SQLiteCodable: SQLiteConfig, SQLiteTransformable {
 }
 
 extension SQLiteCodable {
-    func declareKeys(mapper: SQLiteMapper) {}
+    public func declareKeys(mapper: SQLiteMapper) {}
 }
 
 extension SQLiteCodable {
@@ -117,14 +117,14 @@ extension SQLiteCodable {
         var suffix = " WHERE"
         var param = [Any]()
         for (k,v) in arguments {
-            order += " \(k) = ? AND"
+            order += " \(k) = ? ,"
             param.append(v)
         }
         for (k,v) in condition {
             suffix += " \(k) = ? AND"
             param.append(v)
         }
-        write(order: order._fromIndex(-4) + suffix._fromIndex(-4), arguments: param)
+        write(order: order._fromIndex(-2) + suffix._fromIndex(-4), arguments: param)
     }
 }
 
@@ -195,7 +195,7 @@ extension Row {
     fileprivate func toJSON() -> [String: Any] {
         var result = [String: Any]()
         for (k,v) in self {
-            result[k] = v
+            result[k] = v.storage.value
         }
         return result
     }
