@@ -23,8 +23,9 @@ public class SQLiteManager: NSObject {
     
     private static let share = SQLiteManager()
     private lazy var publicDatabase: String = {
-        return "public.db"
+        return SQLiteManager.share.envString + "_public.db"
     }()
+    private var envString = ""
     private lazy var privateDatabase: String? = nil
     private var _mode: SQLiteLogMode = .error
     private lazy var databaseFolder: String = {
@@ -33,8 +34,12 @@ public class SQLiteManager: NSObject {
         return NSSearchPathForDirectoriesInDomains(dir, domain, true).first ?? ""
     }()
     
+    public class func setEnvironment(_ env: String) {
+        SQLiteManager.share.envString = env
+    }
+    
     public class func initialize(_ identifier: String) {
-        let idv = identifier.toMD5().uppercased()
+        let idv = (SQLiteManager.share.envString + identifier).toMD5().uppercased()
         SQLiteManager.share.privateDatabase = "\(idv).db"
     }
     
