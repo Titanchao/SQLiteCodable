@@ -4,6 +4,7 @@
 将model自动存储到数据库
 
 ```swift
+SQLiteManager.setEnvironment("test")
 SQLiteManager.initialize("private")
 SQLiteManager.prepare { () -> [SQLiteCodable.Type] in
 	return [Player.self]
