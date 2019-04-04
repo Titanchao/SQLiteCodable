@@ -170,7 +170,11 @@ extension SQLiteCodable {
         do {
             let dbQueue = try sqliteQueue()
             try dbQueue.write({ db in
-                try db.execute(order, arguments: StatementArguments(arguments))
+                if let args = StatementArguments(arguments) {
+                    try db.execute(sql: order, arguments: args)
+                } else {
+                    try db.execute(sql: order)
+                }
             })
         } catch { SQLiteLog.error(error) }
     }
@@ -178,12 +182,19 @@ extension SQLiteCodable {
     public static func read(order: String, arguments: [Any], one: Bool) -> Any? {
         do {
             let dbQueue = try sqliteQueue(readonly: true)
-            let args = StatementArguments(arguments)
-            return try dbQueue.read({ db -> Any? in
-                return one ? try Row.fetchOne(db, order, arguments: args)?.toJSON() : try Row.fetchAll(db, order, arguments: args).map({ (r) -> Any in
-                    return r.toJSON()
+            if let args = StatementArguments(arguments) {
+                return try dbQueue.read({ db -> Any? in
+                    return one ? try Row.fetchOne(db, sql: order, arguments: args)?.toJSON() : try Row.fetchAll(db, sql: order, arguments: args).map({ (r) -> Any in
+                        return r.toJSON()
+                    })
                 })
-            })
+            } else {
+                return try dbQueue.read({ db -> Any? in
+                    return one ? try Row.fetchOne(db, sql: order)?.toJSON() : try Row.fetchAll(db, sql: order).map({ (r) -> Any in
+                        return r.toJSON()
+                    })
+                })
+            }
         } catch {
             SQLiteLog.error(error)
             return nil

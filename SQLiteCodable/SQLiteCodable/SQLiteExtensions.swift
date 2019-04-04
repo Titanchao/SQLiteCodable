@@ -8,14 +8,6 @@
 
 import UIKit
 
-@_silgen_name("swift_getFieldAt")
-func _getFieldAt(
-    _ type: Any.Type,
-    _ index: Int,
-    _ callback: @convention(c) (UnsafePointer<CChar>, UnsafeRawPointer, UnsafeMutableRawPointer) -> Void,
-    _ ctx: UnsafeMutableRawPointer
-)
-
 extension UnsafePointer {
     init<T>(p: UnsafePointer<T>) {
         self = UnsafeRawPointer(p).assumingMemoryBound(to: Pointee.self)

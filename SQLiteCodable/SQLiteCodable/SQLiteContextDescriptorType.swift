@@ -46,6 +46,20 @@ extension SQLiteContextDescriptorType {
             }
         }
     }
+    
+    var reflectionFieldDescriptor: FieldDescriptor? {
+        guard let contextDescriptor = self.contextDescriptor else {
+            return nil
+        }
+        let pointer = UnsafePointer<Int>(self.pointer)
+        let base = pointer.advanced(by: contextDescriptorOffsetLocation)
+        let offset = contextDescriptor.reflectionFieldDescriptor
+        let address = base.pointee + 4 * 4 // (4 properties in front) * (sizeof Int32)
+        guard let fieldDescriptorPtr = UnsafePointer<_FieldDescriptor>(bitPattern: address + offset) else {
+            return nil
+        }
+        return FieldDescriptor(pointer: fieldDescriptorPtr)
+    }
 }
 
 protocol SQLiteContextDescriptorProtocol {
