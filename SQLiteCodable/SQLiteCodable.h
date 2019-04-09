@@ -2,8 +2,8 @@
 //  SQLiteCodable.h
 //  SQLiteCodable
 //
-//  Created by tian on 2018/12/17.
-//  Copyright © 2018 tian. All rights reserved.
+//  Created by tian on 2019/4/9.
+//  Copyright © 2019 tian. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
