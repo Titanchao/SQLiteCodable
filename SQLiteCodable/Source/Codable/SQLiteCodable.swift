@@ -36,7 +36,7 @@ extension SQLiteCodable {
         return "A0"
     }
     
-    func declareKeys(mapper: SQLiteMapper) {}
+    public func declareKeys(mapper: SQLiteMapper) {}
 }
 
 //MARK: - 插入
