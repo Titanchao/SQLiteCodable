@@ -1,52 +1,30 @@
-/*
- * Copyright 1999-2101 Alibaba Group.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
-//
-//  Created by zhouzhuo on 07/01/2017.
-//
-
-struct _class_rw_t {
+struct sql_class_rw_t {
     var flags: Int32
     var version: Int32
     var ro: UInt
-    // other fields we don't care
-
-    func class_ro_t() -> UnsafePointer<_class_ro_t>? {
-        return UnsafePointer<_class_ro_t>(bitPattern: self.ro)
+    
+    func class_ro_t() -> UnsafePointer<sql_class_ro_t>? {
+        return UnsafePointer<sql_class_ro_t>(bitPattern: self.ro)
     }
 }
 
-struct _class_ro_t {
+struct sql_class_ro_t {
     var flags: Int32
     var instanceStart: Int32
     var instanceSize: Int32
-    // other fields we don't care
 }
 
-// MARK: MetadataType
-protocol MetadataType : PointerType {
+protocol MetadataType : SQLPointerType {
     static var kind: Metadata.Kind? { get }
 }
 
 extension MetadataType {
-
+    
     var kind: Metadata.Kind {
-        return Metadata.Kind(flag: UnsafePointer<Int>(pointer).pointee)
+        return Metadata.Kind(flag: UnsafePointer<Int>(pointer: pointer).pointee)
     }
-
+    
     init?(anyType: Any.Type) {
         self.init(pointer: unsafeBitCast(anyType, to: UnsafePointer<Int>.self))
         if let kind = type(of: self).kind, kind != self.kind {
@@ -55,10 +33,9 @@ extension MetadataType {
     }
 }
 
-// MARK: Metadata
 struct Metadata : MetadataType {
     var pointer: UnsafePointer<Int>
-
+    
     init(type: Any.Type) {
         self.init(pointer: unsafeBitCast(type, to: UnsafePointer<Int>.self))
     }
@@ -70,14 +47,12 @@ var is64BitPlatform: Bool {
     return MemoryLayout<Int>.size == MemoryLayout<Int64>.size
 }
 
-// MARK: Metadata + Kind
-// include/swift/ABI/MetadataKind.def
 let MetadataKindIsNonHeap = 0x200
 let MetadataKindIsRuntimePrivate = 0x100
 let MetadataKindIsNonType = 0x400
 extension Metadata {
     static let kind: Kind? = nil
-
+    
     enum Kind {
         case `struct`
         case `enum`
@@ -116,53 +91,45 @@ extension Metadata {
     }
 }
 
-// MARK: Metadata + Class
 extension Metadata {
     struct Class : ContextDescriptorType {
-
+        
         static let kind: Kind? = .class
         var pointer: UnsafePointer<_Metadata._Class>
-
+        
         var isSwiftClass: Bool {
             get {
-                // see include/swift/Runtime/Config.h macro SWIFT_CLASS_IS_SWIFT_MASK
-                // it can be 1 or 2 depending on environment
                 let lowbit = self.pointer.pointee.rodataPointer & 3
                 return lowbit != 0
             }
         }
-
+        
         var contextDescriptorOffsetLocation: Int {
             return is64BitPlatform ? 8 : 11
         }
-
+        
         var superclass: Class? {
             guard let superclass = pointer.pointee.superclass else {
                 return nil
             }
-
-            // If the superclass doesn't conform to handyjson/handyjsonenum protocol,
-            // we should ignore the properties inside
-            if !(superclass is HandyJSON.Type) && !(superclass is HandyJSONEnum.Type) {
+            
+            if !(superclass is SQLiteCodable.Type) {
                 return nil
             }
-
-            // ignore objc-runtime layer
+            
             guard let metaclass = Metadata.Class(anyType: superclass) else {
                 return nil
             }
-
+            
             return metaclass
         }
-
+        
         var vTableSize: Int {
-            // memory size after ivar destroyer
             return Int(pointer.pointee.classObjectSize - pointer.pointee.classObjectAddressPoint) - (contextDescriptorOffsetLocation + 2) * MemoryLayout<Int>.size
         }
-
-        // reference: https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst#generic-argument-vector
+        
         var genericArgumentVector: UnsafeRawPointer? {
-            let pointer = UnsafePointer<Int>(self.pointer)
+            let pointer = UnsafePointer<Int>(pointer: self.pointer)
             var superVTableSize = 0
             if let _superclass = self.superclass {
                 superVTableSize = _superclass.vTableSize / MemoryLayout<Int>.size
@@ -173,44 +140,42 @@ extension Metadata {
             }
             return UnsafeRawPointer(base)
         }
-
-        func _propertyDescriptionsAndStartPoint() -> ([Property.Description], Int32?)? {
+        
+        func _propertyDescriptionsAndStartPoint() -> ([SQLiteAttribute], Int32?)? {
             let instanceStart = pointer.pointee.class_rw_t()?.pointee.class_ro_t()?.pointee.instanceStart
-            var result: [Property.Description] = []
+            var result: [SQLiteAttribute] = []
             if let fieldOffsets = self.fieldOffsets {
                 class NameAndType {
                     var name: String?
                     var type: Any.Type?
                 }
                 for i in 0..<self.numberOfFields {
-
                     if let name = self.reflectionFieldDescriptor?.fieldRecords[i].fieldName,
                         let cMangledTypeName = self.reflectionFieldDescriptor?.fieldRecords[i].mangledTypeName,
-                        let fieldType = _getTypeByMangledNameInContext(cMangledTypeName, getMangledTypeNameSize(cMangledTypeName), genericContext: self.contextDescriptorPointer, genericArguments: self.genericArgumentVector) {
-
-                        result.append(Property.Description(key: name, type: fieldType, offset: fieldOffsets[i]))
+                    let fieldType = _getTypeByMangledNameInContext(cMangledTypeName, getMangledTypeNameSize(cMangledTypeName), genericContext: self.contextDescriptorPointer, genericArguments: self.genericArgumentVector) {
+                        result.append(SQLiteAttribute(name: name, type: fieldType, offset: fieldOffsets[i]))
                     }
                 }
             }
-
+            
             if let superclass = superclass,
                 String(describing: unsafeBitCast(superclass.pointer, to: Any.Type.self)) != "SwiftObject",  // ignore the root swift object
                 let superclassProperties = superclass._propertyDescriptionsAndStartPoint(),
                 superclassProperties.0.count > 0 {
-
+                
                 return (superclassProperties.0 + result, superclassProperties.1)
             }
             return (result, instanceStart)
         }
-
-        func propertyDescriptions() -> [Property.Description]? {
+        
+        func propertyDescriptions() -> [SQLiteAttribute]? {
             let propsAndStp = _propertyDescriptionsAndStartPoint()
             if let firstInstanceStart = propsAndStp?.1,
                 let firstProperty = propsAndStp?.0.first?.offset {
-                    return propsAndStp?.0.map({ (propertyDesc) -> Property.Description in
-                        let offset = propertyDesc.offset - firstProperty + Int(firstInstanceStart)
-                        return Property.Description(key: propertyDesc.key, type: propertyDesc.type, offset: offset)
-                    })
+                return propsAndStp?.0.map({ (attr) -> SQLiteAttribute in
+                    let offset = attr.offset - firstProperty + Int(firstInstanceStart)
+                    return SQLiteAttribute(name: attr.name, type: attr.type, offset: offset)
+                })
             } else {
                 return propsAndStp?.0
             }
@@ -235,20 +200,19 @@ extension _Metadata {
         var nominalTypeDescriptor: Int
         var ivarDestroyer: Int
         // other fields we don't care
-
-        func class_rw_t() -> UnsafePointer<_class_rw_t>? {
+        
+        func class_rw_t() -> UnsafePointer<sql_class_rw_t>? {
             if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
                 let fast_data_mask: UInt64 = 0x00007ffffffffff8
                 let databits_t: UInt64 = UInt64(self.rodataPointer)
-                return UnsafePointer<_class_rw_t>(bitPattern: UInt(databits_t & fast_data_mask))
+                return UnsafePointer<sql_class_rw_t>(bitPattern: UInt(databits_t & fast_data_mask))
             } else {
-                return UnsafePointer<_class_rw_t>(bitPattern: self.rodataPointer & 0xfffffffc)
+                return UnsafePointer<sql_class_rw_t>(bitPattern: self.rodataPointer & 0xfffffffc)
             }
         }
     }
 }
 
-// MARK: Metadata + Struct
 extension Metadata {
     struct Struct : ContextDescriptorType {
         static let kind: Kind? = .struct
@@ -256,25 +220,25 @@ extension Metadata {
         var contextDescriptorOffsetLocation: Int {
             return 1
         }
-
+        
         var genericArgumentOffsetLocation: Int {
             return 2
         }
-
+        
         var genericArgumentVector: UnsafeRawPointer? {
-            let pointer = UnsafePointer<Int>(self.pointer)
+            let pointer = UnsafePointer<Int>(pointer: self.pointer)
             let base = pointer.advanced(by: genericArgumentOffsetLocation)
             if base.pointee == 0 {
                 return nil
             }
             return UnsafeRawPointer(base)
         }
-
-        func propertyDescriptions() -> [Property.Description]? {
+        
+        func propertyDescriptions() -> [SQLiteAttribute]? {
             guard let fieldOffsets = self.fieldOffsets else {
                 return []
             }
-            var result: [Property.Description] = []
+            var result: [SQLiteAttribute] = []
             class NameAndType {
                 var name: String?
                 var type: Any.Type?
@@ -283,8 +247,7 @@ extension Metadata {
                 if let name = self.reflectionFieldDescriptor?.fieldRecords[i].fieldName,
                     let cMangledTypeName = self.reflectionFieldDescriptor?.fieldRecords[i].mangledTypeName,
                     let fieldType = _getTypeByMangledNameInContext(cMangledTypeName, getMangledTypeNameSize(cMangledTypeName), genericContext: self.contextDescriptorPointer, genericArguments: self.genericArgumentVector) {
-
-                    result.append(Property.Description(key: name, type: fieldType, offset: fieldOffsets[i]))
+                    result.append(SQLiteAttribute(name: name, type: fieldType, offset: fieldOffsets[i]))
                 }
             }
             return result
@@ -300,7 +263,6 @@ extension _Metadata {
     }
 }
 
-// MARK: Metadata + ObjcClassWrapper
 extension Metadata {
     struct ObjcClassWrapper: ContextDescriptorType {
         static let kind: Kind? = .objCClassWrapper
@@ -308,7 +270,6 @@ extension Metadata {
         var contextDescriptorOffsetLocation: Int {
             return is64BitPlatform ? 8 : 11
         }
-
         var targetType: Any.Type? {
             get {
                 return pointer.pointee.targetType
@@ -322,4 +283,16 @@ extension _Metadata {
         var kind: Int
         var targetType: Any.Type?
     }
+}
+
+@_silgen_name("swift_getTypeByMangledNameInContext")
+public func _getTypeByMangledNameInContext(
+    _ name: UnsafePointer<UInt8>,
+    _ nameLength: Int,
+    genericContext: UnsafeRawPointer?,
+    genericArguments: UnsafeRawPointer?)
+    -> Any.Type?
+
+func getMangledTypeNameSize(_ mangledName: UnsafePointer<UInt8>) -> Int {
+    return 256
 }

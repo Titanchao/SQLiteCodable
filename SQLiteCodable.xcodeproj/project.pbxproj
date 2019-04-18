@@ -8,94 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		94E3F93E225C946E0033CAD1 /* SQLiteCodable.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E3F93C225C946E0033CAD1 /* SQLiteCodable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94E3F94A225C94B10033CAD1 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F946225C94B10033CAD1 /* SQLiteManager.swift */; };
-		94E3F94B225C94B10033CAD1 /* SQLiteCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F947225C94B10033CAD1 /* SQLiteCodable.swift */; };
-		94E3F94C225C94B10033CAD1 /* SQLiteAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F948225C94B10033CAD1 /* SQLiteAttribute.swift */; };
-		94E3F94D225C94B10033CAD1 /* SQLiteMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F949225C94B10033CAD1 /* SQLiteMapper.swift */; };
-		94E3F973225C94CF0033CAD1 /* ReflectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F94F225C94CF0033CAD1 /* ReflectionHelper.swift */; };
-		94E3F974225C94CF0033CAD1 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F950225C94CF0033CAD1 /* Metadata.swift */; };
-		94E3F975225C94CF0033CAD1 /* CustomDateFormatTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F951225C94CF0033CAD1 /* CustomDateFormatTransform.swift */; };
-		94E3F976225C94CF0033CAD1 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F952225C94CF0033CAD1 /* Properties.swift */; };
-		94E3F977225C94CF0033CAD1 /* HexColorTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F953225C94CF0033CAD1 /* HexColorTransform.swift */; };
-		94E3F978225C94CF0033CAD1 /* Transformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F954225C94CF0033CAD1 /* Transformable.swift */; };
-		94E3F979225C94CF0033CAD1 /* PointerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F955225C94CF0033CAD1 /* PointerType.swift */; };
-		94E3F97A225C94CF0033CAD1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F956225C94CF0033CAD1 /* Logger.swift */; };
-		94E3F97B225C94CF0033CAD1 /* MangledName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F957225C94CF0033CAD1 /* MangledName.swift */; };
-		94E3F97C225C94CF0033CAD1 /* ExtendCustomModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F958225C94CF0033CAD1 /* ExtendCustomModelType.swift */; };
-		94E3F97D225C94CF0033CAD1 /* Measuable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F959225C94CF0033CAD1 /* Measuable.swift */; };
-		94E3F97E225C94CF0033CAD1 /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F95A225C94CF0033CAD1 /* ISO8601DateTransform.swift */; };
-		94E3F97F225C94CF0033CAD1 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F95B225C94CF0033CAD1 /* Export.swift */; };
-		94E3F980225C94CF0033CAD1 /* URLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F95C225C94CF0033CAD1 /* URLTransform.swift */; };
-		94E3F981225C94CF0033CAD1 /* NSDecimalNumberTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F95D225C94CF0033CAD1 /* NSDecimalNumberTransform.swift */; };
-		94E3F982225C94CF0033CAD1 /* ContextDescriptorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F95E225C94CF0033CAD1 /* ContextDescriptorType.swift */; };
-		94E3F983225C94CF0033CAD1 /* EnumTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F95F225C94CF0033CAD1 /* EnumTransform.swift */; };
-		94E3F984225C94CF0033CAD1 /* CBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F960225C94CF0033CAD1 /* CBridge.swift */; };
-		94E3F985225C94CF0033CAD1 /* FieldDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F961225C94CF0033CAD1 /* FieldDescriptor.swift */; };
-		94E3F986225C94CF0033CAD1 /* BuiltInBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F962225C94CF0033CAD1 /* BuiltInBasicType.swift */; };
-		94E3F987225C94CF0033CAD1 /* OtherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F963225C94CF0033CAD1 /* OtherExtension.swift */; };
-		94E3F988225C94CF0033CAD1 /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F964225C94CF0033CAD1 /* Deserializer.swift */; };
-		94E3F989225C94CF0033CAD1 /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F965225C94CF0033CAD1 /* DataTransform.swift */; };
-		94E3F98A225C94CF0033CAD1 /* BuiltInBridgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F966225C94CF0033CAD1 /* BuiltInBridgeType.swift */; };
-		94E3F98B225C94CF0033CAD1 /* HelpingMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F967225C94CF0033CAD1 /* HelpingMapper.swift */; };
-		94E3F98C225C94CF0033CAD1 /* AnyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F968225C94CF0033CAD1 /* AnyExtensions.swift */; };
-		94E3F98D225C94CF0033CAD1 /* EnumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F969225C94CF0033CAD1 /* EnumType.swift */; };
-		94E3F98E225C94CF0033CAD1 /* HandyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E3F96A225C94CF0033CAD1 /* HandyJSON.h */; };
-		94E3F98F225C94CF0033CAD1 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F96B225C94CF0033CAD1 /* TransformType.swift */; };
-		94E3F990225C94CF0033CAD1 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F96C225C94CF0033CAD1 /* DateTransform.swift */; };
-		94E3F991225C94CF0033CAD1 /* PropertyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F96D225C94CF0033CAD1 /* PropertyInfo.swift */; };
-		94E3F992225C94CF0033CAD1 /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F96E225C94CF0033CAD1 /* DateFormatterTransform.swift */; };
-		94E3F993225C94CF0033CAD1 /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F96F225C94CF0033CAD1 /* Serializer.swift */; };
-		94E3F994225C94CF0033CAD1 /* ExtendCustomBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F970225C94CF0033CAD1 /* ExtendCustomBasicType.swift */; };
-		94E3F995225C94CF0033CAD1 /* TransformOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F971225C94CF0033CAD1 /* TransformOf.swift */; };
-		94E3F996225C94CF0033CAD1 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3F972225C94CF0033CAD1 /* Configuration.swift */; };
 		94E3F999225C96620033CAD1 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E3F998225C96620033CAD1 /* GRDB.framework */; };
+		94FF59EA2268D175002BD618 /* SQLiteCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E22268D175002BD618 /* SQLiteCodable.swift */; };
+		94FF59EB2268D175002BD618 /* FieldDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E32268D175002BD618 /* FieldDescriptor.swift */; };
+		94FF59EC2268D175002BD618 /* SQLiteAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E42268D175002BD618 /* SQLiteAttribute.swift */; };
+		94FF59ED2268D175002BD618 /* PointerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E52268D175002BD618 /* PointerType.swift */; };
+		94FF59EE2268D175002BD618 /* ContextDescriptorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E62268D175002BD618 /* ContextDescriptorType.swift */; };
+		94FF59EF2268D175002BD618 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E72268D175002BD618 /* SQLiteManager.swift */; };
+		94FF59F02268D175002BD618 /* SQLiteMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E82268D175002BD618 /* SQLiteMapper.swift */; };
+		94FF59F12268D175002BD618 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF59E92268D175002BD618 /* Metadata.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		94E3F939225C946E0033CAD1 /* SQLiteCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SQLiteCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E3F93C225C946E0033CAD1 /* SQLiteCodable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLiteCodable.h; sourceTree = "<group>"; };
 		94E3F93D225C946E0033CAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94E3F946225C94B10033CAD1 /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
-		94E3F947225C94B10033CAD1 /* SQLiteCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteCodable.swift; sourceTree = "<group>"; };
-		94E3F948225C94B10033CAD1 /* SQLiteAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteAttribute.swift; sourceTree = "<group>"; };
-		94E3F949225C94B10033CAD1 /* SQLiteMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteMapper.swift; sourceTree = "<group>"; };
-		94E3F94F225C94CF0033CAD1 /* ReflectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionHelper.swift; sourceTree = "<group>"; };
-		94E3F950225C94CF0033CAD1 /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		94E3F951225C94CF0033CAD1 /* CustomDateFormatTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatTransform.swift; sourceTree = "<group>"; };
-		94E3F952225C94CF0033CAD1 /* Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
-		94E3F953225C94CF0033CAD1 /* HexColorTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorTransform.swift; sourceTree = "<group>"; };
-		94E3F954225C94CF0033CAD1 /* Transformable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformable.swift; sourceTree = "<group>"; };
-		94E3F955225C94CF0033CAD1 /* PointerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointerType.swift; sourceTree = "<group>"; };
-		94E3F956225C94CF0033CAD1 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		94E3F957225C94CF0033CAD1 /* MangledName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangledName.swift; sourceTree = "<group>"; };
-		94E3F958225C94CF0033CAD1 /* ExtendCustomModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendCustomModelType.swift; sourceTree = "<group>"; };
-		94E3F959225C94CF0033CAD1 /* Measuable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measuable.swift; sourceTree = "<group>"; };
-		94E3F95A225C94CF0033CAD1 /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransform.swift; sourceTree = "<group>"; };
-		94E3F95B225C94CF0033CAD1 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
-		94E3F95C225C94CF0033CAD1 /* URLTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTransform.swift; sourceTree = "<group>"; };
-		94E3F95D225C94CF0033CAD1 /* NSDecimalNumberTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberTransform.swift; sourceTree = "<group>"; };
-		94E3F95E225C94CF0033CAD1 /* ContextDescriptorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextDescriptorType.swift; sourceTree = "<group>"; };
-		94E3F95F225C94CF0033CAD1 /* EnumTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTransform.swift; sourceTree = "<group>"; };
-		94E3F960225C94CF0033CAD1 /* CBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBridge.swift; sourceTree = "<group>"; };
-		94E3F961225C94CF0033CAD1 /* FieldDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldDescriptor.swift; sourceTree = "<group>"; };
-		94E3F962225C94CF0033CAD1 /* BuiltInBasicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuiltInBasicType.swift; sourceTree = "<group>"; };
-		94E3F963225C94CF0033CAD1 /* OtherExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherExtension.swift; sourceTree = "<group>"; };
-		94E3F964225C94CF0033CAD1 /* Deserializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializer.swift; sourceTree = "<group>"; };
-		94E3F965225C94CF0033CAD1 /* DataTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransform.swift; sourceTree = "<group>"; };
-		94E3F966225C94CF0033CAD1 /* BuiltInBridgeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuiltInBridgeType.swift; sourceTree = "<group>"; };
-		94E3F967225C94CF0033CAD1 /* HelpingMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpingMapper.swift; sourceTree = "<group>"; };
-		94E3F968225C94CF0033CAD1 /* AnyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyExtensions.swift; sourceTree = "<group>"; };
-		94E3F969225C94CF0033CAD1 /* EnumType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumType.swift; sourceTree = "<group>"; };
-		94E3F96A225C94CF0033CAD1 /* HandyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandyJSON.h; sourceTree = "<group>"; };
-		94E3F96B225C94CF0033CAD1 /* TransformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
-		94E3F96C225C94CF0033CAD1 /* DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTransform.swift; sourceTree = "<group>"; };
-		94E3F96D225C94CF0033CAD1 /* PropertyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyInfo.swift; sourceTree = "<group>"; };
-		94E3F96E225C94CF0033CAD1 /* DateFormatterTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterTransform.swift; sourceTree = "<group>"; };
-		94E3F96F225C94CF0033CAD1 /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
-		94E3F970225C94CF0033CAD1 /* ExtendCustomBasicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendCustomBasicType.swift; sourceTree = "<group>"; };
-		94E3F971225C94CF0033CAD1 /* TransformOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformOf.swift; sourceTree = "<group>"; };
-		94E3F972225C94CF0033CAD1 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		94E3F998225C96620033CAD1 /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDB.framework; path = Carthage/Build/iOS/GRDB.framework; sourceTree = "<group>"; };
+		94FF59E22268D175002BD618 /* SQLiteCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteCodable.swift; sourceTree = "<group>"; };
+		94FF59E32268D175002BD618 /* FieldDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldDescriptor.swift; sourceTree = "<group>"; };
+		94FF59E42268D175002BD618 /* SQLiteAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteAttribute.swift; sourceTree = "<group>"; };
+		94FF59E52268D175002BD618 /* PointerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointerType.swift; sourceTree = "<group>"; };
+		94FF59E62268D175002BD618 /* ContextDescriptorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextDescriptorType.swift; sourceTree = "<group>"; };
+		94FF59E72268D175002BD618 /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		94FF59E82268D175002BD618 /* SQLiteMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteMapper.swift; sourceTree = "<group>"; };
+		94FF59E92268D175002BD618 /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,64 +76,16 @@
 		94E3F944225C94750033CAD1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				94E3F945225C949C0033CAD1 /* Codable */,
-				94E3F94E225C94CF0033CAD1 /* HandyJSON */,
+				94FF59E72268D175002BD618 /* SQLiteManager.swift */,
+				94FF59E22268D175002BD618 /* SQLiteCodable.swift */,
+				94FF59E82268D175002BD618 /* SQLiteMapper.swift */,
+				94FF59E42268D175002BD618 /* SQLiteAttribute.swift */,
+				94FF59E62268D175002BD618 /* ContextDescriptorType.swift */,
+				94FF59E32268D175002BD618 /* FieldDescriptor.swift */,
+				94FF59E92268D175002BD618 /* Metadata.swift */,
+				94FF59E52268D175002BD618 /* PointerType.swift */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		94E3F945225C949C0033CAD1 /* Codable */ = {
-			isa = PBXGroup;
-			children = (
-				94E3F948225C94B10033CAD1 /* SQLiteAttribute.swift */,
-				94E3F947225C94B10033CAD1 /* SQLiteCodable.swift */,
-				94E3F946225C94B10033CAD1 /* SQLiteManager.swift */,
-				94E3F949225C94B10033CAD1 /* SQLiteMapper.swift */,
-			);
-			path = Codable;
-			sourceTree = "<group>";
-		};
-		94E3F94E225C94CF0033CAD1 /* HandyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				94E3F94F225C94CF0033CAD1 /* ReflectionHelper.swift */,
-				94E3F950225C94CF0033CAD1 /* Metadata.swift */,
-				94E3F951225C94CF0033CAD1 /* CustomDateFormatTransform.swift */,
-				94E3F952225C94CF0033CAD1 /* Properties.swift */,
-				94E3F953225C94CF0033CAD1 /* HexColorTransform.swift */,
-				94E3F954225C94CF0033CAD1 /* Transformable.swift */,
-				94E3F955225C94CF0033CAD1 /* PointerType.swift */,
-				94E3F956225C94CF0033CAD1 /* Logger.swift */,
-				94E3F957225C94CF0033CAD1 /* MangledName.swift */,
-				94E3F958225C94CF0033CAD1 /* ExtendCustomModelType.swift */,
-				94E3F959225C94CF0033CAD1 /* Measuable.swift */,
-				94E3F95A225C94CF0033CAD1 /* ISO8601DateTransform.swift */,
-				94E3F95B225C94CF0033CAD1 /* Export.swift */,
-				94E3F95C225C94CF0033CAD1 /* URLTransform.swift */,
-				94E3F95D225C94CF0033CAD1 /* NSDecimalNumberTransform.swift */,
-				94E3F95E225C94CF0033CAD1 /* ContextDescriptorType.swift */,
-				94E3F95F225C94CF0033CAD1 /* EnumTransform.swift */,
-				94E3F960225C94CF0033CAD1 /* CBridge.swift */,
-				94E3F961225C94CF0033CAD1 /* FieldDescriptor.swift */,
-				94E3F962225C94CF0033CAD1 /* BuiltInBasicType.swift */,
-				94E3F963225C94CF0033CAD1 /* OtherExtension.swift */,
-				94E3F964225C94CF0033CAD1 /* Deserializer.swift */,
-				94E3F965225C94CF0033CAD1 /* DataTransform.swift */,
-				94E3F966225C94CF0033CAD1 /* BuiltInBridgeType.swift */,
-				94E3F967225C94CF0033CAD1 /* HelpingMapper.swift */,
-				94E3F968225C94CF0033CAD1 /* AnyExtensions.swift */,
-				94E3F969225C94CF0033CAD1 /* EnumType.swift */,
-				94E3F96A225C94CF0033CAD1 /* HandyJSON.h */,
-				94E3F96B225C94CF0033CAD1 /* TransformType.swift */,
-				94E3F96C225C94CF0033CAD1 /* DateTransform.swift */,
-				94E3F96D225C94CF0033CAD1 /* PropertyInfo.swift */,
-				94E3F96E225C94CF0033CAD1 /* DateFormatterTransform.swift */,
-				94E3F96F225C94CF0033CAD1 /* Serializer.swift */,
-				94E3F970225C94CF0033CAD1 /* ExtendCustomBasicType.swift */,
-				94E3F971225C94CF0033CAD1 /* TransformOf.swift */,
-				94E3F972225C94CF0033CAD1 /* Configuration.swift */,
-			);
-			path = HandyJSON;
 			sourceTree = "<group>";
 		};
 		94E3F997225C96620033CAD1 /* Frameworks */ = {
@@ -216,7 +104,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E3F93E225C946E0033CAD1 /* SQLiteCodable.h in Headers */,
-				94E3F98E225C94CF0033CAD1 /* HandyJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,45 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94E3F98A225C94CF0033CAD1 /* BuiltInBridgeType.swift in Sources */,
-				94E3F993225C94CF0033CAD1 /* Serializer.swift in Sources */,
-				94E3F976225C94CF0033CAD1 /* Properties.swift in Sources */,
-				94E3F973225C94CF0033CAD1 /* ReflectionHelper.swift in Sources */,
-				94E3F980225C94CF0033CAD1 /* URLTransform.swift in Sources */,
-				94E3F995225C94CF0033CAD1 /* TransformOf.swift in Sources */,
-				94E3F992225C94CF0033CAD1 /* DateFormatterTransform.swift in Sources */,
-				94E3F94D225C94B10033CAD1 /* SQLiteMapper.swift in Sources */,
-				94E3F994225C94CF0033CAD1 /* ExtendCustomBasicType.swift in Sources */,
-				94E3F94C225C94B10033CAD1 /* SQLiteAttribute.swift in Sources */,
-				94E3F981225C94CF0033CAD1 /* NSDecimalNumberTransform.swift in Sources */,
-				94E3F975225C94CF0033CAD1 /* CustomDateFormatTransform.swift in Sources */,
-				94E3F985225C94CF0033CAD1 /* FieldDescriptor.swift in Sources */,
-				94E3F988225C94CF0033CAD1 /* Deserializer.swift in Sources */,
-				94E3F98D225C94CF0033CAD1 /* EnumType.swift in Sources */,
-				94E3F94B225C94B10033CAD1 /* SQLiteCodable.swift in Sources */,
-				94E3F98F225C94CF0033CAD1 /* TransformType.swift in Sources */,
-				94E3F977225C94CF0033CAD1 /* HexColorTransform.swift in Sources */,
-				94E3F97B225C94CF0033CAD1 /* MangledName.swift in Sources */,
-				94E3F97A225C94CF0033CAD1 /* Logger.swift in Sources */,
-				94E3F986225C94CF0033CAD1 /* BuiltInBasicType.swift in Sources */,
-				94E3F990225C94CF0033CAD1 /* DateTransform.swift in Sources */,
-				94E3F987225C94CF0033CAD1 /* OtherExtension.swift in Sources */,
-				94E3F97F225C94CF0033CAD1 /* Export.swift in Sources */,
-				94E3F989225C94CF0033CAD1 /* DataTransform.swift in Sources */,
-				94E3F983225C94CF0033CAD1 /* EnumTransform.swift in Sources */,
-				94E3F98B225C94CF0033CAD1 /* HelpingMapper.swift in Sources */,
-				94E3F97E225C94CF0033CAD1 /* ISO8601DateTransform.swift in Sources */,
-				94E3F984225C94CF0033CAD1 /* CBridge.swift in Sources */,
-				94E3F98C225C94CF0033CAD1 /* AnyExtensions.swift in Sources */,
-				94E3F991225C94CF0033CAD1 /* PropertyInfo.swift in Sources */,
-				94E3F979225C94CF0033CAD1 /* PointerType.swift in Sources */,
-				94E3F97C225C94CF0033CAD1 /* ExtendCustomModelType.swift in Sources */,
-				94E3F996225C94CF0033CAD1 /* Configuration.swift in Sources */,
-				94E3F974225C94CF0033CAD1 /* Metadata.swift in Sources */,
-				94E3F982225C94CF0033CAD1 /* ContextDescriptorType.swift in Sources */,
-				94E3F978225C94CF0033CAD1 /* Transformable.swift in Sources */,
-				94E3F97D225C94CF0033CAD1 /* Measuable.swift in Sources */,
-				94E3F94A225C94B10033CAD1 /* SQLiteManager.swift in Sources */,
+				94FF59EC2268D175002BD618 /* SQLiteAttribute.swift in Sources */,
+				94FF59EE2268D175002BD618 /* ContextDescriptorType.swift in Sources */,
+				94FF59F12268D175002BD618 /* Metadata.swift in Sources */,
+				94FF59F02268D175002BD618 /* SQLiteMapper.swift in Sources */,
+				94FF59EA2268D175002BD618 /* SQLiteCodable.swift in Sources */,
+				94FF59EF2268D175002BD618 /* SQLiteManager.swift in Sources */,
+				94FF59EB2268D175002BD618 /* FieldDescriptor.swift in Sources */,
+				94FF59ED2268D175002BD618 /* PointerType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

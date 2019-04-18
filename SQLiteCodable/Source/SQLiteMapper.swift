@@ -9,18 +9,22 @@
 import UIKit
 
 public class SQLiteMapper {
-    fileprivate var pirmaryKey: Int? = nil
+    
+    fileprivate var primaryKey: Int? = nil
     fileprivate var uniqueKeys: [Int] = []
     
     fileprivate func setPrimaryKey<T>(property: inout T) {
         let pointer = withUnsafePointer(to: &property, { return $0 })
-        self.pirmaryKey = pointer.hashValue
+        if self.primaryKey == nil {
+            self.primaryKey = pointer.hashValue
+        } else {
+            print("table has pirmary key already")
+        }
     }
     
-    internal func isPirmary(key: Int) -> Bool {
-        return self.pirmaryKey == key
+    internal func isPrimary(key: Int) -> Bool {
+        return self.primaryKey == key
     }
-    
     
     fileprivate func setUniqueKeys<T>(property: inout T) {
         let pointer = withUnsafePointer(to: &property, { return $0 })
