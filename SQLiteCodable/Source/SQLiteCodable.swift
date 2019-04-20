@@ -38,7 +38,7 @@ extension SQLiteCodable {
         return "A0"
     }
     
-    static var databaseTableName: String {
+    public static var databaseTableName: String {
         return tableName()
     }
     
